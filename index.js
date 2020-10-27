@@ -18,7 +18,7 @@ export const isObjectEqual = (x, y) => {
     if (xKey && yKey) {
       return isObjectEqual(x[key], y[key])
     } else if (xArr) {
-      if (x[key].toString() != y[key].toString()) {
+      if (x[key].toString() !== y[key].toString()) {
         return false
       }
     } else if (x[key] !== y[key]) {
@@ -26,4 +26,13 @@ export const isObjectEqual = (x, y) => {
     }
   }
   return true
+}
+/**
+ * @desc 数组去重包括复杂对象 数组AND对象
+ * @param {Array} arr 传入要去重的数组 
+ * @return 返回去重后的数组
+ */
+export const uniqe = (arr) => {
+  let tmp = new Set(arr.map(item => JSON.stringify(item)))
+  return Array.from(tmp).map(item => JSON.parse(item))
 }
