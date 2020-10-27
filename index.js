@@ -4,7 +4,7 @@
  * @param {any} y 传入比较的第二个值
  * @return {boolean} true or false
  */
-export const isObjectEqual1 = (x, y) => {
+export const isObjectEqual = (x, y) => {
   let ox = x instanceof Object
   let oy = y instanceof Object
   if (!ox || !oy) {
@@ -16,7 +16,7 @@ export const isObjectEqual1 = (x, y) => {
     let yKey = Object.prototype.toString.call(y[key]) === '[object Object]'
     let xArr = Object.prototype.toString.call(x[key]) === '[object Array]'
     if (xKey && yKey) {
-      return isObjectEqual1(x[key], y[key])
+      return isObjectEqual(x[key], y[key])
     } else if (xArr) {
       if (x[key].toString() != y[key].toString()) {
         return false
